@@ -5,7 +5,9 @@
 using namespace std;
 class Number{
 public:
-virtual void print()=0;
+virtual void print();
+virtual Number add(const Number&);
+virtual Number mul(const NUmber&);
 
 };
 
