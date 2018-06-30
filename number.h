@@ -5,9 +5,10 @@
 using namespace std;
 class Number{
 public:
-virtual void print();
-virtual Number add(const Number&);
-virtual Number mul(const NUmber&);
+Number(){};
+virtual void print(){};
+virtual Number add(const Number&){};
+virtual Number mul(const Number&){};
 
 };
 
@@ -20,12 +21,11 @@ void print(){
 cout<<value<<endl;
 }
 RealNumber add(const RealNumber& other){
-value+=other.value;
-return *this;
+return RealNumber(value+other.value);
+
 }
 RealNumber mul(const RealNumber& other){
-value*=other.value;
-return *this;
+return RealNumber(value*other.value);
 }
 double value;
 };
@@ -40,9 +40,9 @@ value=int(num.value);
 };
 class ComplexNumber:public Number{
 public:
-ComplexNumber(double a=0,double b=0){
-a=a;
-b=b;
+ComplexNumber(double a1,double b1){
+a=a1;
+b=b1;
 }
 void print(){
 if(b>=0)
@@ -51,14 +51,12 @@ else
 cout<<a<<"-"<<b<<"i"<<endl;
 }
 ComplexNumber add(const ComplexNumber& other){
-a+=other.a;
-b+=other.b;
-return *this;
+return ComplexNumber(a+other.a,b+other.b);
+
 }
 ComplexNumber mul(const ComplexNumber& other){
-a=a*other.a-b*other.b;
-b=a*other.b+b*other.a;
-return *this;
+return ComplexNumber(a*other.a-b*other.b,a*other.b+b*other.a);
+
 }
 double a;
 double b;
